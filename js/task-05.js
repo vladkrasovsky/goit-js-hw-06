@@ -3,13 +3,13 @@
 */
 
 const refs = {
-  inputName: document.querySelector("#name-input"),
-  outputName: document.querySelector("#name-output"),
+  nameInput: document.querySelector("#name-input"),
+  nameOutput: document.querySelector("#name-output"),
 };
 
-const onInputNameInput = (event) => {
-  const { value } = event.currentTarget;
-  refs.outputName.textContent = value.length ? value : "Anonymous";
+const onNameInput = (e) => {
+  const { value } = e.currentTarget;
+  refs.nameOutput.textContent = value.trim().length ? value : "Anonymous";
 };
 
-refs.inputName.addEventListener("input", onInputNameInput);
+refs.nameInput.addEventListener("input", onNameInput);

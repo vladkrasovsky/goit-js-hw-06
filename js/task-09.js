@@ -10,14 +10,26 @@ const refs = {
   colorValue: document.querySelector(".color"),
 };
 
-const onColorChangeBtnClick = (event) => {
-  const color = getRandomHexColor();
-  refs.body.style.backgroundColor = color;
-  refs.colorValue.textContent = color;
-};
+// Default color value
+setColorValue("#ffffff");
 
-refs.colorChangeBtn.addEventListener("click", onColorChangeBtnClick);
+refs.colorChangeBtn.addEventListener("click", onColorChange);
+
+function onColorChange() {
+  const color = getRandomHexColor();
+
+  setBodyBgColor(color);
+  setColorValue(color);
+}
 
 function getRandomHexColor() {
   return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+}
+
+function setBodyBgColor(color) {
+  refs.body.style.backgroundColor = color;
+}
+
+function setColorValue(color) {
+  refs.colorValue.textContent = color;
 }

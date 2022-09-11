@@ -20,12 +20,13 @@ Category: Technologies
 Elements: 5 
 */
 
-const categoriesListRef = document.querySelector("#categories");
-const categoriesItemsRef = document.querySelectorAll(".item");
+const refs = {
+  categoriesItem: document.querySelectorAll("#categories .item"),
+};
 
-console.log("Number of categories:", categoriesItemsRef.length);
+console.log("Number of categories:", refs.categoriesItem.length);
 
-categoriesItemsRef.forEach((item) => {
+refs.categoriesItem.forEach((item) => {
   console.log("Category:", item.querySelector("h2").textContent);
   console.log("Elements:", item.querySelectorAll("li").length);
 });

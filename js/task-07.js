@@ -7,11 +7,15 @@ const refs = {
   text: document.querySelector("#text"),
 };
 
-const onFontSizeControlInput = ({ currentTarget: { value } }) => {
-  refs.text.style.fontSize = `${value}px`;
-};
-
 // Default value
 refs.fontSizeControl.value = refs.fontSizeControl.min;
+refs.fontSizeControl.addEventListener("input", onFontSizeChange);
 
-refs.fontSizeControl.addEventListener("input", onFontSizeControlInput);
+function onFontSizeChange(e) {
+  const { value } = e.currentTarget;
+  setTextFontSize(value);
+}
+
+function setTextFontSize(size) {
+  refs.text.style.fontSize = `${size}px`;
+}

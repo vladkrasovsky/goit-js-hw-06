@@ -12,26 +12,27 @@ const refs = {
   loginForm: document.querySelector(".login-form"),
 };
 
-const onLoginFormSubmit = (event) => {
-  event.preventDefault();
+refs.loginForm.addEventListener("submit", onLoginFormSubmit);
 
-  const form = event.currentTarget;
+function onLoginFormSubmit(e) {
   const {
-    elements: { email, password },
-  } = form;
+    currentTarget: form,
+    currentTarget: {
+      elements: { email, password },
+    },
+  } = e;
 
-  if (email.value === "" || password.value === "") {
+  e.preventDefault();
+  validateLoginForm(email.value, password.value) && form.reset();
+}
+
+function validateLoginForm(email, password) {
+  if (email === "" || password === "") {
     alert("Please fill in all the fields!");
-    return;
+    return false;
   }
 
-  const userData = {
-    email: email.value,
-    password: password.value,
-  };
+  console.log({ email, password });
 
-  console.log(userData);
-  form.reset();
-};
-
-refs.loginForm.addEventListener("submit", onLoginFormSubmit);
+  return true;
+}

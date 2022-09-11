@@ -23,18 +23,22 @@ const images = [
   },
 ];
 
-const galleryItemTemplate = (url, alt) => {
-  return `
-    <li class="gallery__item">
-      <img class="gallery__img" src="${url}" alt="${alt}" width="350">
-    </li>
-  `;
+const refs = {
+  gallery: document.querySelector("ul.gallery"),
 };
 
-const imagesMarkup = images
-  .map(({ url, alt }) => galleryItemTemplate(url, alt))
-  .join("");
+const imagesMarkup = createGalleryMarkup(images);
 
-const galleryRef = document.querySelector("ul.gallery");
+refs.gallery.insertAdjacentHTML("beforeend", imagesMarkup);
 
-galleryRef.insertAdjacentHTML("beforeend", imagesMarkup);
+function createGalleryMarkup(images) {
+  return images
+    .map(({ url, alt }) => {
+      return `
+        <li class="gallery__item">
+          <img class="gallery__img" src="${url}" alt="${alt}" width="350">
+        </li>
+      `;
+    })
+    .join("");
+}

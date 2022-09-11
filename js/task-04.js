@@ -9,24 +9,24 @@
 let counterValue = 0;
 
 const refs = {
-  decrementCounterBtn: document.querySelector('[data-action="decrement"]'),
-  incrementCounterBtn: document.querySelector('[data-action="increment"]'),
+  counterDecrementBtn: document.querySelector('[data-action="decrement"]'),
+  counterIncrementBtn: document.querySelector('[data-action="increment"]'),
   counterText: document.querySelector("#value"),
 };
 
-const onDecrementCounterClick = (event) => {
+const onCounterDecrement = (e) => {
   counterValue -= 1;
-  setCounterValue();
+  setCounterText();
 };
 
-const onIncrementCounterClick = (event) => {
+const onCounterIncrement = (e) => {
   counterValue += 1;
-  setCounterValue();
+  setCounterText();
 };
 
-refs.decrementCounterBtn.addEventListener("click", onDecrementCounterClick);
-refs.incrementCounterBtn.addEventListener("click", onIncrementCounterClick);
+refs.counterDecrementBtn.addEventListener("click", onCounterDecrement);
+refs.counterIncrementBtn.addEventListener("click", onCounterIncrement);
 
-function setCounterValue() {
+function setCounterText() {
   refs.counterText.textContent = counterValue;
 }
